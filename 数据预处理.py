@@ -51,3 +51,28 @@ def summary(df):
 summary(data[['race', 'sex','group']])
 
 
+# 如何去处理missing data的问题：
+## consider removing columns which have 60% or more data missing
+def delete_missing(df):
+    """
+    删除超过百分之60的missing data 的列
+    """    
+    missing_number = len(df)* 0.6
+    df = df.dropna(thresh=missing_number,axis=1)
+    return (df)
+
+## fill in the missing data with proper methods
+## fix: replace with medians
+df[col] = df[col].fillna(np.mean(df[col]))   # 括号中填特定数字或者一个函数 或者np.nanmedian(df[col])
+
+data[['sbp','haq']] = data[['sbp','haq']].fillna({'sbp':np.mean(data['sbp']), 'haq':np.mean(data['haq'])})  # 用dictionary：用自己的那列填充@
+
+#画boxplot 找outlier
+df.col.plot(kind = 'box')
+
+data.haq.plot(kind = 'box')
+
+# 画scatter plot
+df.col.plot(kind = 'scatter')
+
+

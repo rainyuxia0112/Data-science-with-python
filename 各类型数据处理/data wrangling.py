@@ -40,6 +40,10 @@ pd.merge(left = df1, right = df2, on = [col], how = 'inner')   # left_on, right_
 
 # pivot table long to wide （两列变多列）
 df_pivot = df.pivot_table(index = [col1, col2], columns = 'element', values = 'value') 
+#data.pivot(index = 'City', columns = 'Category', values = 'Count')  # index 是行， column是哪一列变成column_name（变成列名
+
+
+
 # 试将element 这一列里面的row（不同分类） 按它的名字变成新col， 底下的value是另外一列的value
 #例子
 data_pivot = data_melt.pivot_table(index =  ['id', 'year', 'month', 'day'], 

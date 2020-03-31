@@ -48,3 +48,10 @@ df_pivot = df.pivot_table(index = [col1, col2], columns = 'element', values = 'v
 #例子
 data_pivot = data_melt.pivot_table(index =  ['id', 'year', 'month', 'day'], 
                                    columns = 'element', values = 'temp').reset_index()   #去掉了nan
+
+
+
+# group by
+#here we can count the number of distinct users viewing on a given day
+df = df.groupby("date").agg({"duration": np.sum, "user_id": pd.Series.nunique})   
+# 意思是groupby date，对duration这一列是sum，对user_id这一列是count(distinct)
